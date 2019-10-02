@@ -13,15 +13,7 @@
 
 use Faker\Factory as Faker;
 
-Route::get('/', function () {
-
-    $items = \App\Property::select(['id', 'title'])
-        ->orderBy('id', 'desc')
-        ->limit(50)
-        ->get();
-
-    return view('welcome', ['items' => $items]);
-});
+Route::get('/', 'PropertyController@index');
 
 Route::get('/property/add', function () {
 
@@ -56,7 +48,4 @@ Route::get('/property/add', function () {
     dd($attributes);
 });
 
-Route::get('/property/{id}', function () {
-    $property = \App\Property::where('id', request('id'))->first();
-    return $property;
-});
+Route::get('/property/{propertyId}', 'PropertyController@show');
