@@ -15,18 +15,21 @@
 
         <h1 class="display-3">{{ $property->title }}</h1>
         <h2><span class="text-danger">{{ $property->price }} $</span>, {{ $property->address }}</h2>
-        <h3><span style="margin-right: 20px"><i class="far fa-square"></i> {{ $property->area }} m<sup>2</sup></span>
+        <h3><span style="margin-right: 20px"><i class="fas fa-expand-arrows-alt"></i> {{ $property->area }} m<sup>2</sup></span>
             <span style="margin-right: 20px"><i class="fas fa-bed"></i> {{ $property->rooms }}</span>
             <span style="margin-right: 20px"><i class="fas fa-bath"></i> {{ $property->bathrooms }}</span>
             <span style="margin-right: 20px"><i class="fas fa-parking"></i> {{ $property->car_slots }}</span>
         </h3>
         <p class="lead">{{ $property->description }}</p>
-        <h4>Propery Features</h4>
+        <h4>Property Features</h4>
         <ul>
             <li>One</li>
             <li>Two</li>
             <li>Three</li>
         </ul>
+
+        <h4>Property Location</h4>
+        <div id="propertyMap" style="height: 250px;"></div>
 
         <hr class="my-4">
         <p>
@@ -35,6 +38,20 @@
         <p class="lead">
         </p>
     </div>
+
+    <script>
+        var center = [{{ $property->latitude }}, {{ $property->longitude }}];
+
+        var map = L.map('propertyMap').setView(center, 14);
+
+        L.tileLayer(
+            'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 18
+            }).addTo(map);
+
+        var marker = L.marker(center).addTo(map);
+        marker.bindPopup("{{ $property->title }}").openPopup();
+    </script>
 
     <script>
         var slideIndex = 1;
