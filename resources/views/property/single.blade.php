@@ -24,12 +24,21 @@
         <p class="lead">{{ $property->description }}</p>
         <h4>Property Features</h4>
         <ul>
-            <li>One</li>
-            <li>Two</li>
-            <li>Three</li>
+            @forelse($property->amenities as $amenity)
+                <li>{{ $amenity->name }}</li>
+            @empty
+                <li>No features found</li>
+            @endforelse
         </ul>
 
         <h4>Property Location</h4>
+        <p>
+            @forelse($property->areas as $area)
+                {{ $area->name }}@if(!$loop->last), @endif
+            @empty
+                No additional areas found
+            @endforelse
+        </p>
         <div id="propertyMap" style="height: 250px;"></div>
 
         <hr class="my-4">

@@ -19,7 +19,9 @@ class PropertyController extends Controller
 
     public function show($propertyId)
     {
-        $property = Property::where('id', $propertyId)->first();
+        $property = Property::where('id', $propertyId)
+            ->with(['city', 'type', 'status', 'amenities', 'areas'])
+            ->first();
 
         return view('property.single', [
                 'property' => $property,
