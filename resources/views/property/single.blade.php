@@ -13,9 +13,10 @@
             <button class="btn btn-primary btn-lg" style="position: absolute;top: 50%;right: 0%;transform: translate(0%,-50%);" onclick="plusDivs(1)">&#10095;</button>
         </div>
 
-        <h1 class="display-3">{{ $property->title }}</h1>
-        <h2><span class="text-danger">{{ $property->price }} $</span>, {{ $property->address }}</h2>
-        <h3><span style="margin-right: 20px"><i class="fas fa-expand-arrows-alt"></i> {{ $property->area }} m<sup>2</sup></span>
+        <h1 class="display-3">{{ $property->title }} <small class="text-muted">{{ $property->type->name }} for {{ $property->status->name }}</small></h1>
+        <h2><span class="text-danger">{{ $property->price }} $</span>, {{ $property->city->name }}, {{ $property->address }}</h2>
+        <h3>
+            <span style="margin-right: 20px"><i class="fas fa-expand-arrows-alt"></i> {{ $property->area }} m<sup>2</sup></span>
             <span style="margin-right: 20px"><i class="fas fa-bed"></i> {{ $property->rooms }}</span>
             <span style="margin-right: 20px"><i class="fas fa-bath"></i> {{ $property->bathrooms }}</span>
             <span style="margin-right: 20px"><i class="fas fa-parking"></i> {{ $property->car_slots }}</span>
@@ -46,11 +47,14 @@
 
         L.tileLayer(
             'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
                 maxZoom: 18
             }).addTo(map);
 
-        var marker = L.marker(center).addTo(map);
-        marker.bindPopup("{{ $property->title }}").openPopup();
+        L.marker(center)
+            .addTo(map)
+            .bindPopup("{{ $property->title }}")
+            .openPopup();
     </script>
 
     <script>
