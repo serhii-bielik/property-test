@@ -42,4 +42,9 @@ class Property extends Model
     {
         return $this->belongsToMany('App\Area', 'property_area');
     }
+
+    public function agency()
+    {
+        return $this->belongsTo('App\Agency');
+    }
 }

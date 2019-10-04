@@ -20,7 +20,7 @@ class PropertyController extends Controller
     public function show($propertyId)
     {
         $property = Property::where('id', $propertyId)
-            ->with(['city', 'type', 'status', 'amenities', 'areas'])
+            ->with(['city', 'type', 'status', 'amenities', 'areas', 'agency'])
             ->first();
 
         return view('property.single', [

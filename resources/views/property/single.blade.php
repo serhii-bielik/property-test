@@ -46,6 +46,13 @@
 
         </p>
         <p class="lead">
+            @if($property->agency)
+                <img src="{{ $property->agency->logo }}">
+                Added by <strong>{{ $property->agency->name }}</strong>, {{ $property->agency->city->name }}, {{ $property->agency->phone }}<br>
+                <a href="/agency/{{ $property->agency->id }}" class="btn btn-outline-info">View all property of {{ $property->agency->name }}</a><br>
+                {{ $property->agency->description }}<br>
+                <a href="{{ $property->agency->website }}" target="_blank">Visit website</a>
+            @endif
         </p>
     </div>
 
