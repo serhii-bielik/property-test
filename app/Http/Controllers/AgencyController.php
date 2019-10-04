@@ -12,14 +12,15 @@ class AgencyController extends Controller
     {
         $agency = Agency::findOrFail($agencyId);
 
-        $items = Property::select(['id', 'title'])
+        $properties = Property::select(['id', 'title', 'description', 'small_photos',
+            'price', 'area', 'rooms', 'bathrooms'])
             ->where('agency_id', $agencyId)
             ->orderBy('id', 'desc')
             ->limit(50)
             ->get();
 
         return view('property.agency', [
-            'items' => $items,
+            'properties' => $properties,
             'agency' => $agency,
         ]);
     }

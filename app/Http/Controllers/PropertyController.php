@@ -9,12 +9,13 @@ class PropertyController extends Controller
 {
     public function index()
     {
-        $items = \App\Property::select(['id', 'title'])
+        $properties = \App\Property::select(['id', 'title', 'description', 'small_photos',
+            'price', 'area', 'rooms', 'bathrooms'])
             ->orderBy('id', 'desc')
             ->limit(50)
             ->get();
 
-        return view('property.index', ['items' => $items]);
+        return view('property.index', ['properties' => $properties]);
     }
 
     public function show($propertyId)
