@@ -51,3 +51,6 @@ Route::get('/property/add', function () {
 Route::get('/property/{propertyId}', 'PropertyController@show');
 
 Route::get('/agency/{agencyId}', 'AgencyController@show');
+
+Auth::routes();
+
