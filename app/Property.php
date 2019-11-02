@@ -14,7 +14,6 @@ class Property extends Model
 
     protected $casts = [
         'is_active' => 'boolean',
-        'small_photos' => 'array',
         'photos' => 'array',
     ];
 

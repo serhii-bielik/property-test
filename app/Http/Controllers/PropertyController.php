@@ -9,7 +9,7 @@ class PropertyController extends Controller
 {
     public function index()
     {
-        $properties = \App\Property::select(['id', 'title', 'description', 'small_photos',
+        $properties = \App\Property::select(['id', 'title', 'description', 'photos',
             'price', 'area', 'rooms', 'bathrooms'])
             ->orderBy('id', 'desc')
             ->limit(50)
