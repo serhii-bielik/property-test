@@ -294,7 +294,7 @@
                     <div class="card" style="margin-bottom: 10px;">
                         <div class="card-body">
                             <h4 class="card-title"><a href="/property/{{ $property->id }}">{{ $property->title }}</a></h4>
-                            <img style="height: 200px; width: 100%; display: block;" src="{{ $property->small_photos[0] }}" alt="Card image">
+                            <img style="height: 200px; width: 100%; display: block;" src="{{ $property->photos[0] }}" alt="Card image">
                             <div class="card-body">
                                 <h6 class="card-subtitle mb-2 text-muted">
                                     <span style="margin-right: 10px" class="text-danger">{{ $property->price }} $</span>
